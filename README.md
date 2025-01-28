@@ -56,8 +56,8 @@
 
 ## **Screenshots / GIFs**
 
-![BattleBlasters1](https://github.com/Mecha-NOX/Countdown-Carnage/blob/b78451a59a67d9caf7e22beff407e0be5d344b78/GIFs/Countdown-Carnage_First.gif)
-![BattleBlasters2](https://github.com/Mecha-NOX/Countdown-Carnage/blob/b78451a59a67d9caf7e22beff407e0be5d344b78/GIFs/Countdown-Carnage_First.gif)
+![BattleBlasters1](https://github.com/Mecha-NOX/Battle-Blasters/blob/6f07fb1f80befbacc88ad55d0f6b7aa7df4201b5/GIFs/Battle-Blasters_Cover.gif)
+![BattleBlasters2](https://github.com/Mecha-NOX/Battle-Blasters/blob/6f07fb1f80befbacc88ad55d0f6b7aa7df4201b5/GIFs/Battle-Blasters_Second.gif)
 
 ---
 
