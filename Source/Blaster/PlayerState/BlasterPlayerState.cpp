@@ -56,6 +56,11 @@ void ABlasterPlayerState::UpdateDeathMessage(FString KillerName)
 	}
 }
 
+void ABlasterPlayerState::SetPlayerName(const FString& NewName)
+{
+	Super::SetPlayerName(NewName);
+}
+
 void ABlasterPlayerState::OnRep_Score()
 {
 	Super::OnRep_Score();

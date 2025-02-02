@@ -30,6 +30,8 @@ public:
 	void AddToScore(float ScoreAmount);
 	void AddToDefeats(int32 DefeatsAmount);
 	void UpdateDeathMessage(FString KillerName);
+
+	virtual void SetPlayerName(const FString& NewName) override;
 	
 private:
 	UPROPERTY()

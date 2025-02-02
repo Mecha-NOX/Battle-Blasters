@@ -15,33 +15,6 @@ void ABlasterPlayerController::BeginPlay()
 	Super::BeginPlay();
 
 	BlasterHUD = Cast<ABlasterHUD>(GetHUD());
-
-	ABlasterPlayerState* BlasterPlayerState = GetPlayerState<ABlasterPlayerState>();
-	if (BlasterPlayerState)
-	{
-		ABlasterCharacter* BlasterCharacter = Cast<ABlasterCharacter>(GetPawn());
-		if (BlasterCharacter)
-		{
-			BlasterCharacter->ServerSetPlayerName(BlasterPlayerState->GetPlayerName());
-		}
-	}
-}
-
-void ABlasterPlayerController::OnPossess(APawn* InPawn)
-{
-	Super::OnPossess(InPawn);
-
-	ABlasterCharacter* BlasterCharacter = Cast<ABlasterCharacter>(InPawn);
-	if (BlasterCharacter)
-	{
-		SetHUDHealth(BlasterCharacter->GetHealth(), BlasterCharacter->GetMaxHealth());
-		HideDeathMessage();
-		ABlasterPlayerState* BlasterPlayerState = GetPlayerState<ABlasterPlayerState>();
-		if (BlasterPlayerState)
-		{
-			BlasterCharacter->ServerSetPlayerName(BlasterPlayerState->GetPlayerName());
-		}
-	}
 }
 
 void ABlasterPlayerController::SetHUDHealth(float Health, float MaxHealth)

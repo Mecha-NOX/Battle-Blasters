@@ -270,8 +270,7 @@ void ABlasterCharacter::BeginPlay()
 		OnTakeAnyDamage.AddDynamic(this, &ABlasterCharacter::ReceiveDamage);
 		if (BlasterPlayerState)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Server setting player name: %s"), *LocalPlayerName);
-			ServerSetPlayerName(LocalPlayerName); // Server RPC call
+			ServerSetPlayerName((FName("^Leo").ToString())); // Server RPC call
 		}
 	}
 	else if(IsLocallyControlled()) // Client Side
