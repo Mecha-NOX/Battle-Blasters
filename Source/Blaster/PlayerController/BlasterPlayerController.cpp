@@ -8,12 +8,23 @@
 #include "Components/TextBlock.h"
 #include "Blaster/Character/BlasterCharacter.h"
 #include "Components/Image.h"
+#include "Blaster/PlayerState/BlasterPlayerState.h"
 
 void ABlasterPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
 	BlasterHUD = Cast<ABlasterHUD>(GetHUD());
+
+	ABlasterPlayerState* BlasterPlayerState = GetPlayerState<ABlasterPlayerState>();
+	if (BlasterPlayerState)
+	{
+		ABlasterCharacter* BlasterCharacter = Cast<ABlasterCharacter>(GetPawn());
+		if (BlasterCharacter)
+		{
+			BlasterCharacter->ServerSetPlayerName(BlasterPlayerState->GetPlayerName());
+		}
+	}
 }
 
 void ABlasterPlayerController::OnPossess(APawn* InPawn)
@@ -25,6 +36,11 @@ void ABlasterPlayerController::OnPossess(APawn* InPawn)
 	{
 		SetHUDHealth(BlasterCharacter->GetHealth(), BlasterCharacter->GetMaxHealth());
 		HideDeathMessage();
+		ABlasterPlayerState* BlasterPlayerState = GetPlayerState<ABlasterPlayerState>();
+		if (BlasterPlayerState)
+		{
+			BlasterCharacter->ServerSetPlayerName(BlasterPlayerState->GetPlayerName());
+		}
 	}
 }
 

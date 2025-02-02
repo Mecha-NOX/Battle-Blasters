@@ -265,18 +265,18 @@ void ABlasterCharacter::BeginPlay()
 	}
 	UpdateHUDHealth();
 
-	if (HasAuthority())
+	if (HasAuthority()) // Server Side
 	{
 		OnTakeAnyDamage.AddDynamic(this, &ABlasterCharacter::ReceiveDamage);
 		if (BlasterPlayerState)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Server setting player name: %s"), *LocalPlayerName);
-			ServerSetPlayerName(FString::Printf(TEXT("^Leo"))); // Server RPC call // Change back to LocalPlayerName
+			ServerSetPlayerName(LocalPlayerName); // Server RPC call
 		}
 	}
-	else if(IsLocallyControlled())
+	else if(IsLocallyControlled()) // Client Side
 	{
-		ServerSetPlayerName(LocalPlayerName); // Client RPC call
+		ServerSetPlayerName(LocalPlayerName); // Server RPC call
 	}
 }
 

@@ -3,7 +3,7 @@
 
 #include "OverheadWidget.h"
 #include "Components/TextBlock.h"
-#include "GameFramework/PlayerState.h"
+#include "Blaster/PlayerState/BlasterPlayerState.h"
 
 void UOverheadWidget::SetDisplayText(FString TextToDisplay)
 {
@@ -40,12 +40,12 @@ void UOverheadWidget::ShowPlayerName(APawn* InPawn)
 {
 	if (InPawn)
 	{
-		APlayerState* PlayerState = InPawn->GetPlayerState();
+		ABlasterPlayerState* BlasterPlayerState = Cast<ABlasterPlayerState>(InPawn->GetPlayerState());
 		FString PlayerName = FString("");
 
-		if (PlayerState)
+		if (BlasterPlayerState)
 		{
-			PlayerName = PlayerState->GetPlayerName();
+			PlayerName = BlasterPlayerState->GetPlayerName();
 			FString LocalRoleString = FString::Printf(TEXT("%s"), *PlayerName);
 			SetDisplayText(LocalRoleString);
 		}
