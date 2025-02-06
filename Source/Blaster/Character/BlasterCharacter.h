@@ -170,8 +170,6 @@ private:
 
 	FTimerHandle ElimTimer;
 
-	FTimerHandle NameSetTimerHandle;
-
 	UPROPERTY(EditDefaultsOnly)
 	float ElimDelay = 3.f;
 
