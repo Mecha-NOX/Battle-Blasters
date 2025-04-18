@@ -6,6 +6,9 @@
 #include "GameFramework/PlayerState.h"
 #include "BlasterPlayerState.generated.h"
 
+class ABlasterCharacter;
+class ABlasterPlayerController;
+
 /**
  * 
  */
@@ -35,9 +38,10 @@ public:
 	
 private:
 	UPROPERTY()
-	class ABlasterCharacter* Character;
+	ABlasterCharacter* Character;
+	
 	UPROPERTY()
-	class ABlasterPlayerController* Controller;
+	ABlasterPlayerController* Controller;
 
 	UPROPERTY(ReplicatedUsing = OnRep_Defeats)
 	int32 Defeats;

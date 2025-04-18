@@ -142,6 +142,10 @@ void ABlasterCharacter::Elim()
 
 void ABlasterCharacter::MulticastElim_Implementation()
 {
+	if (BlasterPlayerController)
+	{
+		BlasterPlayerController->SetHUDWeaponAmmo(0);
+	}
 	bElimmed = true;
 	PlayElimMontage();
 
@@ -262,21 +266,18 @@ void ABlasterCharacter::BeginPlay()
 		}
 		BlasterPlayerController->HideDeathMessage();
 		BlasterPlayerState = Cast<ABlasterPlayerState>(BlasterPlayerController->PlayerState);
-	}
-	UpdateHUDHealth();
-
-	if (HasAuthority()) // Server Side
-	{
-		OnTakeAnyDamage.AddDynamic(this, &ABlasterCharacter::ReceiveDamage);
+		
+		// Retrieving name from PlayerState
 		if (BlasterPlayerState)
 		{
-			ServerSetPlayerName((FName("^Leo").ToString())); // Server RPC call
+			LocalPlayerName = BlasterPlayerState->GetPlayerName(); 
+			if (HasAuthority())
+			{
+				ServerSetPlayerName(LocalPlayerName); //Server RPC call
+			}
 		}
 	}
-	else if(IsLocallyControlled()) // Client Side
-	{
-		ServerSetPlayerName(LocalPlayerName); // Server RPC call
-	}
+	UpdateHUDHealth();
 }
 
 void ABlasterCharacter::Tick(float DeltaTime)

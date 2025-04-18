@@ -6,6 +6,9 @@
 #include "Blueprint/UserWidget.h"
 #include "CharacterOverlay.generated.h"
 
+class UProgressBar;
+class UTextBlock;
+class UImage;
 /**
  * 
  */
@@ -16,10 +19,10 @@ class BLASTER_API UCharacterOverlay : public UUserWidget
 	
 public:
 	UPROPERTY(meta = (BindWidget))
-	class UProgressBar* HealthBar;
+	UProgressBar* HealthBar;
 
 	UPROPERTY(meta = (BindWidget))
-	class UTextBlock* HealthText;
+	UTextBlock* HealthText;
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* ScoreAmount;
@@ -28,11 +31,14 @@ public:
 	UTextBlock* DefeatsAmount;
 
 	UPROPERTY(meta = (BindWidget))
+	UTextBlock* WeaponAmmoAmount;
+
+	UPROPERTY(meta = (BindWidget))
 	UTextBlock* KillerName;
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* KilledBy;
 
 	UPROPERTY(meta = (BindWidget))
-	class UImage* OverlayImage;
+	UImage* OverlayImage;
 };

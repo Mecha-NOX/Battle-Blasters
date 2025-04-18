@@ -14,6 +14,13 @@ class UInputMappingContext;
 class UInputAction;
 class USpringArmComponent;
 class UCameraComponent;
+class UWidgetComponent;
+class AWeapon;
+class UCombatComponent;
+class UAnimMontage;
+class ABlasterPlayerController;
+class USoundCue;
+class ABlasterPlayerState;
 
 UCLASS()
 class BLASTER_API ABlasterCharacter : public ACharacter, public IInteractWithCrosshairsInterface
@@ -103,19 +110,19 @@ private:
 	UCameraComponent* FollowCamera;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	class UWidgetComponent* OverheadWidget;
+	UWidgetComponent* OverheadWidget;
 
 	UPROPERTY(EditAnywhere, Category = "Player Name")
 	FString LocalPlayerName = TEXT("Unknown Player");
 
 	UPROPERTY(ReplicatedUsing = OnRep_OverlappingWeapon)
-	class AWeapon* OverlappingWeapon;
+	AWeapon* OverlappingWeapon;
 
 	UFUNCTION()
 	void OnRep_OverlappingWeapon(AWeapon* LastWeapon); //RepNotify
 
 	UPROPERTY(VisibleAnywhere)
-	class UCombatComponent* Combat;
+	UCombatComponent* Combat;
 
 	UFUNCTION(Server, Reliable)
 	void ServerEquip(); //Server RPC
@@ -129,7 +136,7 @@ private:
 	void TurnInPlace(float DeltaTime);
 
 	UPROPERTY(EditAnywhere, Category = Combat)
-	class UAnimMontage* FireWeaponMontage;
+	UAnimMontage* FireWeaponMontage;
 
 	UPROPERTY(EditAnywhere, Category = Combat)
 	UAnimMontage* HitReactMontage;
@@ -164,7 +171,7 @@ private:
 	void OnRep_Health(); //RepNotify
 
 	UPROPERTY()
-	class ABlasterPlayerController* BlasterPlayerController;
+	ABlasterPlayerController* BlasterPlayerController;
 
 	bool bElimmed = false;
 
@@ -210,10 +217,10 @@ private:
 	UParticleSystemComponent* ElimBotComponent;
 
 	UPROPERTY(EditAnywhere)
-	class USoundCue* ElimBotSound;
+	USoundCue* ElimBotSound;
 
 	UPROPERTY()
-	class ABlasterPlayerState* BlasterPlayerState;
+	ABlasterPlayerState* BlasterPlayerState;
 
 public:
 	UFUNCTION(Server, Reliable)

@@ -6,13 +6,17 @@
 #include "GameFramework/HUD.h"
 #include "BlasterHUD.generated.h"
 
+class UTexture2D;
+class UUserWidget;
+class UCharacterOverlay;
+
 USTRUCT(BlueprintType)
 struct FHUDPackage
 {
 	GENERATED_BODY()
 public:
 	UPROPERTY()
-	class UTexture2D* CrosshairsCenter;
+	UTexture2D* CrosshairsCenter;
 	UPROPERTY()
 	UTexture2D* CrosshairsLeft;
 	UPROPERTY()
@@ -38,9 +42,9 @@ public:
 	virtual void DrawHUD() override;
 
 	UPROPERTY(EditAnywhere, Category = "Player Stats")
-	TSubclassOf<class UUserWidget> CharacterOverlayClass;
+	TSubclassOf<UUserWidget> CharacterOverlayClass;
 
-	class UCharacterOverlay* CharacterOverlay;
+	UCharacterOverlay* CharacterOverlay;
 
 protected:
 	virtual void BeginPlay() override;

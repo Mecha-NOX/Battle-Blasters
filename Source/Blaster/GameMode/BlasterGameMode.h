@@ -6,6 +6,7 @@
 #include "GameFramework/GameMode.h"
 #include "BlasterGameMode.generated.h"
 
+class ABlasterPlayerStart;
 /**
  * 
  */
