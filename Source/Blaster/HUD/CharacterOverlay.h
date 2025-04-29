@@ -37,6 +37,9 @@ public:
 	UTextBlock* CarriedAmmoAmount;
 
 	UPROPERTY(meta = (BindWidget))
+	UImage* WeaponIcon;
+
+	UPROPERTY(meta = (BindWidget))
 	UTextBlock* KillerName;
 
 	UPROPERTY(meta = (BindWidget))
@@ -44,4 +47,7 @@ public:
 
 	UPROPERTY(meta = (BindWidget))
 	UImage* OverlayImage;
+
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* MatchCountdownText;
 };

@@ -24,7 +24,7 @@ public:
 
 	void EquipWeapon(class AWeapon* WeaponToEquip);
 	void Reload();
-	
+
 	UFUNCTION(BlueprintCallable)
 	void FinishReloading();
 protected:
@@ -55,6 +55,8 @@ protected:
 	void ServerReload(); //Server RPC
 
 	void HandleReload();
+
+	int32 AmountToReload();
 
 private:
 	UPROPERTY()
@@ -139,6 +141,8 @@ private:
 
 	UFUNCTION()
 	void OnRep_CombatState();
+
+	void UpdateAmmoValues();
 
 public:		
 };

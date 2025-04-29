@@ -288,6 +288,7 @@ void ABlasterCharacter::BeginPlay()
 			Subsystem->AddMappingContext(InputMappingContext, 0);
 		}
 		BlasterPlayerController->HideDeathMessage();
+		
 		BlasterPlayerState = Cast<ABlasterPlayerState>(BlasterPlayerController->PlayerState);
 		
 		// Retrieving name from PlayerState
@@ -301,6 +302,10 @@ void ABlasterCharacter::BeginPlay()
 		}
 	}
 	UpdateHUDHealth();
+	if (HasAuthority())
+	{
+		OnTakeAnyDamage.AddDynamic(this, &ABlasterCharacter::ReceiveDamage);
+	}
 }
 
 void ABlasterCharacter::Tick(float DeltaTime)
@@ -495,7 +500,7 @@ void ABlasterCharacter::SimProxiesTurn()
 
 void ABlasterCharacter::FireButtonPressed()
 {
-	if (Combat)
+	if (Combat && Combat->EquippedWeapon)
 	{
 		Combat->FireButtonPressed(true);
 	}
